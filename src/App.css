@@ -1,0 +1,7 @@
+.tab-selector > a.active {
+  font-weight: bold;
+}
+
+.hidden {
+  display: none;
+}

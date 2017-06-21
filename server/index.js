@@ -5,19 +5,21 @@ const { makeExecutableSchema } = require('graphql-tools');
 
 const typeDefs = `
 type Query {
-  odds: [Int]!
-  evens: [Int]!
+  list(type: String!): [Int]!
 }
 `;
 
 const resolvers = {
   Query: {
-    odds() {
-      return delayed([1, 3, 5, 7, 9]);
-    },
-    evens() {
-      return delayed([2, 4, 6, 8, 10]);
-    },
+    list(root, { type }) {
+      if (type === 'evens') {
+        return delayed([2, 4, 6, 8, 10]);
+      } else if (type === 'odds') {
+        return delayed([1, 3, 5, 7, 9]);
+      } else {
+        throw new Error(`unrecognized list type: ${type}`)
+      }
+    }
   }
 };
 

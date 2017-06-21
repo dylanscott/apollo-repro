@@ -1,8 +1,47 @@
 import React, { Component } from 'react';
+import classNames from 'classnames'
+
+import './App.css';
+
+import List from './List'
 
 class App extends Component {
+  state = {
+    selected: 'odds',
+  };
+
   render() {
-    return <div>sup</div>;
+    const { selected } = this.state
+
+    // we need to ensure the List components re-render every time so we pass
+    // this lambda in to ensure a prop change occurs
+    const force = () => {}
+
+    return <div>
+      <div className='tab-selector'>
+        <a href onClick={this.select('odds')} 
+          className={classNames({ active: selected === 'odds' })}>
+          odds
+        </a>
+        {' '}
+        <a href onClick={this.select('evens')} 
+          className={classNames({ active: selected === 'evens' })}>
+          evens
+        </a>
+      </div>
+
+      <List type='odds'
+        className={classNames({ hidden: selected !== 'odds' })} />
+      <List type='evens'
+        className={classNames({ hidden: selected !== 'evens' })} />
+    </div>;
+  }
+
+  select(type) {
+    return (e) => {
+      e.preventDefault();
+      this.setState({ selected: type });
+    }
   }
 }
 
