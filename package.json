@@ -3,12 +3,14 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "apollo-client": "^1.4.2",
     "body-parser": "^1.17.2",
     "express": "^4.15.3",
     "graphql": "^0.10.3",
     "graphql-server-express": "^0.8.5",
     "graphql-tools": "^1.0.0",
     "react": "^15.6.1",
+    "react-apollo": "^1.4.2",
     "react-dom": "^15.6.1"
   },
   "devDependencies": {
@@ -19,5 +21,10 @@
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject"
+  },
+  "proxy": {
+    "/graphql": {
+      "target": "http://localhost:3001"
+    }
   }
 }
