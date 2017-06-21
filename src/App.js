@@ -12,11 +12,6 @@ class App extends Component {
 
   render() {
     const { selected } = this.state
-
-    // we need to ensure the List components re-render every time so we pass
-    // this lambda in to ensure a prop change occurs
-    const force = () => {}
-
     return <div>
       <div className='tab-selector'>
         <a href onClick={this.select('odds')} 

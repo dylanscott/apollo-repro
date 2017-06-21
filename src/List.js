@@ -4,7 +4,7 @@ import gql from 'graphql-tag';
 
 class List extends Component {
   render() {
-    const { type, className, data } = this.props
+    const { className, data } = this.props
     return <div className={className}>
       {
         data.loading
