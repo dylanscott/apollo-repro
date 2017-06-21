@@ -14,10 +14,13 @@
     "react-dom": "^15.6.1"
   },
   "devDependencies": {
+    "concurrently": "^3.4.0",
     "react-scripts": "1.0.7"
   },
   "scripts": {
-    "start": "react-scripts start",
+    "start-client": "react-scripts start",
+    "start-server": "node ./server",
+    "start": "concurrently --prefix \"[{name}]\" --names client,server \"yarn run start-client\" \"yarn run start-server\"",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject"
